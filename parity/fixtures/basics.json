@@ -1,0 +1,293 @@
+[
+  {
+    "expr": "1 + 2",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 * 3 + 1",
+    "expected": {
+      "k": "int",
+      "v": "7"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "(1 + 2) * 3",
+    "expected": {
+      "k": "int",
+      "v": "9"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "10 - 4 - 2",
+    "expected": {
+      "k": "int",
+      "v": "4"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "true \u0026\u0026 false",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "true || false",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "!true",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "not true",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 \u003c 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 \u003c= 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "3 \u003e 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "3 \u003e= 3",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 == 1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 != 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 == 1.0",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 \u003c 2.0",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "nil == nil",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'a' == 'a'",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'a' \u003c 'b'",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 \u003e 2 ? 'a' : 'b'",
+    "expected": {
+      "k": "string",
+      "v": "b"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "true ? 1 : 2",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "-5",
+    "expected": {
+      "k": "int",
+      "v": "-5"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "-5.5",
+    "expected": {
+      "k": "float",
+      "v": -5.5
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 ** 10",
+    "expected": {
+      "k": "float",
+      "v": 1024
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 ^ 3",
+    "expected": {
+      "k": "float",
+      "v": 8
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "7 % 3",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 .. 5",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "5"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 in [1, 2, 3]",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "4 in [1, 2, 3]",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'foo' + 'bar'",
+    "expected": {
+      "k": "string",
+      "v": "foobar"
+    },
+    "type": "",
+    "error": false
+  }
+]

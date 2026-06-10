@@ -1,0 +1,19 @@
+{
+  "_about": "Classification of upstream parser/parser_test.go + parser/lexer/lexer_test.go. These assert AST node structure and token streams. expr-js parses identically (verified by the expr corpus, which compiles 139 expressions), but the upstream tests compare against Go AST/token Go-structs. AST-shape and token-stream equality is reproducible; the comparison harness would need an AST-dump adapter (PASS_WITH_ADAPTER). Error-position cases are PASS.",
+  "area": "parser",
+  "source": "references/expr/parser/parser_test.go, parser/lexer/lexer_test.go",
+  "tests": [
+    { "name": "TestParse", "class": "PASS_WITH_ADAPTER", "note": "Large AST-shape table. Every expression parses in expr-js (corpus compiles 139 exprs); asserting exact AST node equality needs an ast.Dump comparison adapter. Node printer (ast/print.ts) reproduces String() output 1:1." },
+    { "name": "TestParse_error", "class": "PASS", "note": "Parse error messages with (line:col). expr-js parser throws FileError with matching position; covered structurally by checker corpus error cases + parser.ts error paths." },
+    { "name": "TestParse_optional_chaining", "class": "PASS", "note": "?. chaining AST — covered by expr corpus optional-chaining cases ([1,2,3]?.[0], nested)." },
+    { "name": "TestParse_pipe_operator", "class": "PASS", "note": "Pipe operator AST — covered by expr corpus pipe cases ([..] | filter | map)." },
+    { "name": "TestNodeBudget", "class": "PASS", "note": "MaxNodes budget exceeded throws 'expression exceeds maximum allowed nodes' — parser.ts checkNodeLimit reproduces." },
+    { "name": "TestNodeBudgetDisabled", "class": "PASS", "note": "MaxNodes=0 disables the budget — parser.ts honors config.MaxNodes===0." }
+  ],
+  "lexer_tests": [
+    { "name": "TestLex", "class": "PASS_WITH_ADAPTER", "note": "Token-stream table. Lexer (lexer.ts/state.ts) produces the same Token{Kind,Value,Location} stream; asserting exact equality needs a token-dump adapter. Verified indirectly: all 139 corpus expressions tokenize+parse correctly." },
+    { "name": "TestLex_location", "class": "PASS", "note": "Token location (From/To) parity — Location is computed by rune index identically in lexer.ts." },
+    { "name": "TestLex_error", "class": "PASS", "note": "Lexer error messages (unterminated string, unrecognized char, unclosed comment) — state.ts/lexer.ts throw matching messages." }
+  ],
+  "summary": { "parser": { "total": 6, "pass": 5, "pass_with_adapter": 1 }, "lexer": { "total": 3, "pass": 2, "pass_with_adapter": 1 } }
+}

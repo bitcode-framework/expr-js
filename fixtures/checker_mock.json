@@ -1,0 +1,257 @@
+[
+  {
+    "expr": "Foo.Bar.Not",
+    "errorContains": "type mock.Bar has no field Not",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Noo",
+    "errorContains": "unknown name Noo",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Foo()",
+    "errorContains": "mock.Foo is not callable",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Foo['bar']",
+    "errorContains": "type mock.Foo has no field bar",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Foo.Method(42)",
+    "errorContains": "too many arguments to call Method",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Foo.Bar()",
+    "errorContains": "mock.Bar is not callable",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Foo.Bar.Not()",
+    "errorContains": "type mock.Bar has no method Not",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "ArrayOfFoo[0].Not",
+    "errorContains": "type mock.Foo has no field Not",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "ArrayOfFoo[Not]",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Not[0]",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Not.Bar",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfFoo.Not",
+    "errorContains": "array elements can only be selected using an integer (got string)",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "FuncParam(true)",
+    "errorContains": "not enough arguments to call FuncParam",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "MapOfFoo['str'].Not",
+    "errorContains": "type mock.Foo has no field Not",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Bool \u0026\u0026 IntPtr",
+    "errorContains": "invalid operation: \u0026\u0026 (mismatched types bool and int)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "No ? Any.Bool : Any.Not",
+    "errorContains": "unknown name No",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Any.Cond ? No : Any.Not",
+    "errorContains": "unknown name No",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Any.Cond ? Any.Bool : No",
+    "errorContains": "unknown name No",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "MapOfAny ? Any : Any",
+    "errorContains": "non-bool expression (type map[string]interface {}) used as condition",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String matches Int",
+    "errorContains": "invalid operation: matches (mismatched types string and int)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int matches String",
+    "errorContains": "invalid operation: matches (mismatched types int and string)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "String contains Int",
+    "errorContains": "invalid operation: contains (mismatched types string and int)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int contains String",
+    "errorContains": "invalid operation: contains (mismatched types int and string)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "!Not",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Not == Any",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "[Not]",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "{id: Not}",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "(nil).Foo",
+    "errorContains": "type nil has no field Foo",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "(nil)['Foo']",
+    "errorContains": "type nil has no field Foo",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "1 and false",
+    "errorContains": "invalid operation: and (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "true or 0",
+    "errorContains": "invalid operation: or (mismatched types bool and int)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "not IntPtr",
+    "errorContains": "invalid operation: not (mismatched type int)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "len(Not)",
+    "errorContains": "unknown name Not",
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Int \u003c Bool",
+    "errorContains": "invalid operation: \u003c (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int \u003e Bool",
+    "errorContains": "invalid operation: \u003e (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int \u003e= Bool",
+    "errorContains": "invalid operation: \u003e= (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int \u003c= Bool",
+    "errorContains": "invalid operation: \u003c= (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int + Bool",
+    "errorContains": "invalid operation: + (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int - Bool",
+    "errorContains": "invalid operation: - (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int * Bool",
+    "errorContains": "invalid operation: * (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int / Bool",
+    "errorContains": "invalid operation: / (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int % Bool",
+    "errorContains": "invalid operation: % (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int ** Bool",
+    "errorContains": "invalid operation: ** (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Int .. Bool",
+    "errorContains": "invalid operation: .. (mismatched types int and bool)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  },
+  {
+    "expr": "Any \u003e Foo",
+    "errorContains": "invalid operation: \u003e (mismatched types interface {} and mock.Foo)",
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go strict-struct field/method checking (reflect); JS env objects are open maps"
+  }
+]

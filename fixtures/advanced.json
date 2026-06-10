@@ -1,0 +1,127 @@
+[
+  {
+    "expr": "let x = 5; x + 1",
+    "expected": {
+      "k": "int",
+      "v": "6"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "let x = 10; let y = 20; x + y",
+    "expected": {
+      "k": "int",
+      "v": "30"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 + 2 == 3 ? 'yes' : 'no'",
+    "expected": {
+      "k": "string",
+      "v": "yes"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "[1,2,3] | filter(# \u003e 1) | map(# * 10)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "20"
+        },
+        {
+          "k": "int",
+          "v": "30"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "{a: 1, b: 2}.a + {a: 1, b: 2}.b",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "map([1,2,3], #index)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "0"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "true ? (false ? 1 : 2) : 3",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "len(filter([1,2,3,4,5], # \u003e 2))",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "map(1..3, # * #)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "9"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "sum(1..10)",
+    "expected": {
+      "k": "int",
+      "v": "55"
+    },
+    "type": "",
+    "error": false
+  }
+]

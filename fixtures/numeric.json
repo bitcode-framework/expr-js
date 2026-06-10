@@ -1,0 +1,182 @@
+[
+  {
+    "expr": "1 / 2",
+    "expected": {
+      "k": "float",
+      "v": 0.5
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "4 / 2",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "10 / 3",
+    "expected": {
+      "k": "float",
+      "v": 3.3333333333333335
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "10 % 3",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "-10 % 3",
+    "expected": {
+      "k": "int",
+      "v": "-1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2.0 * 3",
+    "expected": {
+      "k": "float",
+      "v": 6
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 * 3.0",
+    "expected": {
+      "k": "float",
+      "v": 6
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1.5 + 1.5",
+    "expected": {
+      "k": "float",
+      "v": 3
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "100 * 100 * 100",
+    "expected": {
+      "k": "int",
+      "v": "1000000"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "2 ** 0.5",
+    "expected": {
+      "k": "float",
+      "v": 1.4142135623730951
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "9223372036854775807",
+    "expected": {
+      "k": "int",
+      "v": "9223372036854775807"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "1 + 2 * 3 - 4 / 2",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "(5 + 3) % 4",
+    "expected": {
+      "k": "int",
+      "v": "0"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "3.14 * 2",
+    "expected": {
+      "k": "float",
+      "v": 6.28
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "int(3.9)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "float(3)",
+    "expected": {
+      "k": "float",
+      "v": 3
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "abs(-5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "ceil(4.2)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "floor(4.8)",
+    "expected": {
+      "k": "float",
+      "v": 4
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "round(4.5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "type": "",
+    "error": false
+  }
+]

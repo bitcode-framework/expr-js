@@ -1,0 +1,199 @@
+[
+  {
+    "expr": "filter([1,2,3,4], # \u003e 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "map([1,2,3], # * 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "6"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "all([1,2,3], # \u003e 0)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "any([1,2,3], # \u003e 2)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "none([1,2,3], # \u003e 5)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "one([1,2,3], # == 2)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "count([1,2,3,4], # % 2 == 0)",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "find([1,2,3], # \u003e 1)",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "findIndex([1,2,3], # \u003e 1)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "sum(map([1,2,3], # * 2))",
+    "expected": {
+      "k": "int",
+      "v": "12"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "filter([1,2,3,4,5], # % 2 == 0)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "reduce([1,2,3,4], #acc + #, 0)",
+    "expected": {
+      "k": "int",
+      "v": "10"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "groupBy([1,2,3,4], # % 2)",
+    "expected": {
+      "k": "map",
+      "v": {
+        "0": {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "2"
+            },
+            {
+              "k": "int",
+              "v": "4"
+            }
+          ]
+        },
+        "1": {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        }
+      }
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "sortBy([3,1,2], #)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  }
+]

@@ -1,0 +1,222 @@
+[
+  {
+    "expr": "len([1,2,3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "len('hello')",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "len({a: 1, b: 2})",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "max(1, 2, 3)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "min(3, 2, 1)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "sum([1, 2, 3, 4])",
+    "expected": {
+      "k": "int",
+      "v": "10"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "abs(-10)",
+    "expected": {
+      "k": "int",
+      "v": "10"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "int('42')",
+    "expected": {
+      "k": "int",
+      "v": "42"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "string(42)",
+    "expected": {
+      "k": "string",
+      "v": "42"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "float('3.14')",
+    "expected": {
+      "k": "float",
+      "v": 3.14
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "type(1)",
+    "expected": {
+      "k": "string",
+      "v": "int"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "type('s')",
+    "expected": {
+      "k": "string",
+      "v": "string"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "type(true)",
+    "expected": {
+      "k": "string",
+      "v": "bool"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "type([1])",
+    "expected": {
+      "k": "string",
+      "v": "array"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "keys({a: 1, b: 2})",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "values({a: 1})",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "first([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "last([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "reverse([1, 2, 3])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "sort([3, 1, 2])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  }
+]

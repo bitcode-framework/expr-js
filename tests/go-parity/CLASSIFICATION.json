@@ -1,0 +1,58 @@
+{
+  "_about": "Machine-readable parity classification for expr-js vs expr-lang/expr v1.17.8. Generated from upstream test tables; Go is the source of truth.",
+  "version": { "upstream": "v1.17.8", "exprjs": "1.17.8" },
+  "buckets": {
+    "expr": {
+      "source": "expr_test.go TestExpr (extracted via parity/gen/expr_mock.go)",
+      "total": 160,
+      "pass": 88,
+      "pass_with_adapter": 51,
+      "not_applicable": 21,
+      "runner": "tests/go-parity/expr/expr.parity.test.ts",
+      "result": "139/139 evaluated cases pass; 21 N/A skipped"
+    },
+    "checker": {
+      "source": "checker_test.go TestCheck_error (extracted via parity/gen/checker_mock.go)",
+      "total": 45,
+      "pass": 0,
+      "pass_with_adapter": 15,
+      "not_applicable": 30,
+      "runner": "tests/go-parity/checker/checker.parity.test.ts",
+      "result": "15/15 evaluated cases pass; 30 N/A skipped"
+    },
+    "eval_pure": {
+      "source": "author-curated, validated against Go (parity/gen basics/numeric/builtins/strings/collections/predicates/advanced)",
+      "total": 118,
+      "pass": 118,
+      "pass_with_adapter": 0,
+      "not_applicable": 0,
+      "runner": "tests/parity.test.ts",
+      "result": "118/118 pass"
+    },
+    "unit": {
+      "source": "hand-written invariant + divergence-gotcha tests",
+      "total": 24,
+      "pass": 24,
+      "runner": "tests/unit/core.test.ts",
+      "result": "24/24 pass"
+    }
+  },
+  "notApplicableReasons": [
+    { "area": "expr", "pattern": "Int32/Int64/Uint32/Uint64/Float32 env fields", "reason": "Go fixed-width numeric types distinct from int/float64; JS has bigint+number only" },
+    { "area": "expr", "pattern": "IntPtr/BoolPtr/StringPtr/NilStruct/NilInt", "reason": "Go pointer / typed-nil values have no JS analog" },
+    { "area": "expr", "pattern": "Time/TimePlusDay env fields", "reason": "Go time.Time env value identity/formatting via reflect not modeled in JS mock env" },
+    { "area": "expr", "pattern": "result tagged 'other' (e.g. ArrayOfFoo Stringer)", "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS" },
+    { "area": "checker", "pattern": "has no field / has no method / is not callable / too many arguments / invalid operation / cannot get", "reason": "Go strict-struct field/method checking via reflect; JS env objects are open maps (no closed field set or method signatures)" },
+    { "area": "checker", "pattern": "Stringer/Abstract/Embed/fixed-width", "reason": "Go interface/embedded-struct reflection not modeled" }
+  ],
+  "engineBugsFound": [
+    "in over constant array (Set membership missing in runtime.In) — FIXED",
+    "env function rejected 'doesn't return value' (typeOfValue func had 0 outputs) — FIXED",
+    "duration * float returned duration instead of float64 (Multiply) — FIXED"
+  ],
+  "gates": {
+    "typecheck": "tsc --noEmit: 0 errors",
+    "build": "ESM + CJS + .d.ts: OK",
+    "tests": "unit 24/24, eval_pure 118/118, expr 139/139, checker 15/15"
+  }
+}

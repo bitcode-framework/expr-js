@@ -1,0 +1,390 @@
+{
+  "source": "references/expr/builtin/builtin.go",
+  "count": 64,
+  "builtins": [
+    {
+      "index": 0,
+      "name": "all",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 1,
+      "name": "none",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 2,
+      "name": "any",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 3,
+      "name": "one",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 4,
+      "name": "filter",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 5,
+      "name": "map",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 6,
+      "name": "find",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 7,
+      "name": "findIndex",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 8,
+      "name": "findLast",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 9,
+      "name": "findLastIndex",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 10,
+      "name": "count",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 11,
+      "name": "sum",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 12,
+      "name": "groupBy",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 13,
+      "name": "sortBy",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 14,
+      "name": "reduce",
+      "predicate": true,
+      "fast": false
+    },
+    {
+      "index": 15,
+      "name": "len",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 16,
+      "name": "type",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 17,
+      "name": "abs",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 18,
+      "name": "ceil",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 19,
+      "name": "floor",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 20,
+      "name": "round",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 21,
+      "name": "int",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 22,
+      "name": "float",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 23,
+      "name": "string",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 24,
+      "name": "trim",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 25,
+      "name": "trimPrefix",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 26,
+      "name": "trimSuffix",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 27,
+      "name": "upper",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 28,
+      "name": "lower",
+      "predicate": false,
+      "fast": true
+    },
+    {
+      "index": 29,
+      "name": "split",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 30,
+      "name": "splitAfter",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 31,
+      "name": "replace",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 32,
+      "name": "repeat",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 33,
+      "name": "join",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 34,
+      "name": "indexOf",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 35,
+      "name": "lastIndexOf",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 36,
+      "name": "hasPrefix",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 37,
+      "name": "hasSuffix",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 38,
+      "name": "max",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 39,
+      "name": "min",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 40,
+      "name": "mean",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 41,
+      "name": "median",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 42,
+      "name": "toJSON",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 43,
+      "name": "fromJSON",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 44,
+      "name": "toBase64",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 45,
+      "name": "fromBase64",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 46,
+      "name": "now",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 47,
+      "name": "duration",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 48,
+      "name": "date",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 49,
+      "name": "timezone",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 50,
+      "name": "first",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 51,
+      "name": "last",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 52,
+      "name": "get",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 53,
+      "name": "take",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 54,
+      "name": "keys",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 55,
+      "name": "values",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 56,
+      "name": "toPairs",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 57,
+      "name": "fromPairs",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 58,
+      "name": "reverse",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 59,
+      "name": "uniq",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 60,
+      "name": "concat",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 61,
+      "name": "flatten",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 62,
+      "name": "sort",
+      "predicate": false,
+      "fast": false
+    },
+    {
+      "index": 63,
+      "name": "bitnot",
+      "predicate": false,
+      "fast": false
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "comparable": true,
+    "kind": "int",
+    "name": "MyInt",
+    "pkgPath": "main",
+    "string": "main.MyInt"
+  },
+  {
+    "comparable": true,
+    "kind": "string",
+    "name": "MyString",
+    "pkgPath": "main",
+    "string": "main.MyString"
+  },
+  {
+    "comparable": true,
+    "kind": "struct",
+    "name": "MyTime",
+    "pkgPath": "main",
+    "string": "main.MyTime"
+  }
+]

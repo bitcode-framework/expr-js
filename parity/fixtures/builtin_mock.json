@@ -1,0 +1,1782 @@
+[
+  {
+    "expr": "len(1..10)",
+    "expected": {
+      "k": "int",
+      "v": "10"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len({foo: 1, bar: 2})",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(\"hello\")",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "abs(-5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "abs(.5)",
+    "expected": {
+      "k": "float",
+      "v": 0.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "abs(-.5)",
+    "expected": {
+      "k": "float",
+      "v": 0.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "ceil(5.5)",
+    "expected": {
+      "k": "float",
+      "v": 6
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "ceil(5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "floor(5.5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "floor(5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "round(5.5)",
+    "expected": {
+      "k": "float",
+      "v": 6
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "round(5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "round(5.49)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "int(5.5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "int(5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "int(\"5\")",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "float(5)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "float(5.5)",
+    "expected": {
+      "k": "float",
+      "v": 5.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "float(\"5.5\")",
+    "expected": {
+      "k": "float",
+      "v": 5.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "string(5)",
+    "expected": {
+      "k": "string",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "string(5.5)",
+    "expected": {
+      "k": "string",
+      "v": "5.5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "string(\"5.5\")",
+    "expected": {
+      "k": "string",
+      "v": "5.5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "trim(\"  foo  \")",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "trim(\"__foo___\", \"_\")",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "trimPrefix(\"prefix_foo\", \"prefix_\")",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "trimSuffix(\"foo_suffix\", \"_suffix\")",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "upper(\"foo\")",
+    "expected": {
+      "k": "string",
+      "v": "FOO"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "lower(\"FOO\")",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "split(\"foo,bar,baz\", \",\")",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo"
+        },
+        {
+          "k": "string",
+          "v": "bar"
+        },
+        {
+          "k": "string",
+          "v": "baz"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "split(\"foo,bar,baz\", \",\", 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo"
+        },
+        {
+          "k": "string",
+          "v": "bar,baz"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "splitAfter(\"foo,bar,baz\", \",\")",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo,"
+        },
+        {
+          "k": "string",
+          "v": "bar,"
+        },
+        {
+          "k": "string",
+          "v": "baz"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "splitAfter(\"foo,bar,baz\", \",\", 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo,"
+        },
+        {
+          "k": "string",
+          "v": "bar,baz"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "replace(\"foo,bar,baz\", \",\", \";\")",
+    "expected": {
+      "k": "string",
+      "v": "foo;bar;baz"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "replace(\"foo,bar,baz,goo\", \",\", \";\", 2)",
+    "expected": {
+      "k": "string",
+      "v": "foo;bar;baz,goo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "repeat(\"foo\", 3)",
+    "expected": {
+      "k": "string",
+      "v": "foofoofoo"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "join(ArrayOfString, \",\")",
+    "expected": {
+      "k": "string",
+      "v": "foo,bar,baz"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "join(ArrayOfString)",
+    "expected": {
+      "k": "string",
+      "v": "foobarbaz"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "join([\"foo\", \"bar\", \"baz\"], \",\")",
+    "expected": {
+      "k": "string",
+      "v": "foo,bar,baz"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "join([\"foo\", \"bar\", \"baz\"])",
+    "expected": {
+      "k": "string",
+      "v": "foobarbaz"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "indexOf(\"foo,bar,baz\", \",\")",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "lastIndexOf(\"foo,bar,baz\", \",\")",
+    "expected": {
+      "k": "int",
+      "v": "7"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "hasPrefix(\"foo,bar,baz\", \"foo\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "hasSuffix(\"foo,bar,baz\", \"baz\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max(1, 2, 3)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max(1.5, 2.5, 3.5)",
+    "expected": {
+      "k": "float",
+      "v": 3.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max([1.5, 2.5, 3.5])",
+    "expected": {
+      "k": "float",
+      "v": 3.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max([1, 2, 4, 10], 20, [29, 23, -19])",
+    "expected": {
+      "k": "int",
+      "v": "29"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min([1, 2, 4, 10], 20, [29, 23, -19])",
+    "expected": {
+      "k": "int",
+      "v": "-19"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min(1, 2, 3)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min(1.5, 2.5, 3.5)",
+    "expected": {
+      "k": "float",
+      "v": 1.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min([1.5, 2.5, 3.5])",
+    "expected": {
+      "k": "float",
+      "v": 1.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min(-1, [1.5, 2.5, 3.5])",
+    "expected": {
+      "k": "int",
+      "v": "-1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max(ArrayOfInt)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(ArrayOfInt)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(ArrayOfFloat)",
+    "expected": {
+      "k": "float",
+      "v": 3.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(ArrayOfFloat)",
+    "expected": {
+      "k": "float",
+      "v": 1.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(EmptyIntArray, 5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(EmptyFloatArray, 5)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(NestedIntArrays)",
+    "expected": {
+      "k": "int",
+      "v": "4"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(NestedIntArrays)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(NestedAnyArrays)",
+    "expected": {
+      "k": "int",
+      "v": "4"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(NestedAnyArrays)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(MixedNestedArray)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "min(MixedNestedArray)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "max(ArrayOfInt32)",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "min(ArrayOfInt32)",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "max(NestedInt32Array)",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "min(NestedInt32Array)",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "sum(1..9)",
+    "expected": {
+      "k": "int",
+      "v": "45"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "sum([.5, 1.5, 2.5])",
+    "expected": {
+      "k": "float",
+      "v": 4.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "sum([])",
+    "expected": {
+      "k": "int",
+      "v": "0"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "sum([1, 2, 3.0, 4])",
+    "expected": {
+      "k": "float",
+      "v": 10
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean(1..9)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean([.5, 1.5, 2.5])",
+    "expected": {
+      "k": "float",
+      "v": 1.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean([])",
+    "expected": {
+      "k": "float",
+      "v": 0
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean([1, 2, 3.0, 4])",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean(10, [1, 2, 3], 1..9)",
+    "expected": {
+      "k": "float",
+      "v": 4.6923076923076925
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean(-10, [1, 2, 3, 4])",
+    "expected": {
+      "k": "float",
+      "v": 0
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean(10.9, 1..9)",
+    "expected": {
+      "k": "float",
+      "v": 5.59
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "mean(ArrayOfInt)",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(ArrayOfFloat)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(NestedIntArrays)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(NestedAnyArrays)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(MixedNestedArray)",
+    "expected": {
+      "k": "float",
+      "v": 3
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(ArrayOfInt32)",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "mean(NestedInt32Array)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(1..9)",
+    "expected": {
+      "k": "float",
+      "v": 5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median([.5, 1.5, 2.5])",
+    "expected": {
+      "k": "float",
+      "v": 1.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median([])",
+    "expected": {
+      "k": "float",
+      "v": 0
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median([1, 2, 3])",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median([1, 2, 3, 4])",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median(10, [1, 2, 3], 1..9)",
+    "expected": {
+      "k": "float",
+      "v": 4
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median(-10, [1, 2, 3, 4])",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median(1..5, 4.9)",
+    "expected": {
+      "k": "float",
+      "v": 3.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "median(ArrayOfInt)",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(ArrayOfFloat)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(NestedIntArrays)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(NestedAnyArrays)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(MixedNestedArray)",
+    "expected": {
+      "k": "float",
+      "v": 3
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(ArrayOfInt32)",
+    "expected": {
+      "k": "float",
+      "v": 2
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "median(NestedInt32Array)",
+    "expected": {
+      "k": "float",
+      "v": 2.5
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "toJSON({foo: 1, bar: 2})",
+    "expected": {
+      "k": "string",
+      "v": "{\n  \"bar\": 2,\n  \"foo\": 1\n}"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "fromJSON(\"[1, 2, 3]\")",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "float",
+          "v": 1
+        },
+        {
+          "k": "float",
+          "v": 2
+        },
+        {
+          "k": "float",
+          "v": 3
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "toBase64(\"hello\")",
+    "expected": {
+      "k": "string",
+      "v": "aGVsbG8="
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "fromBase64(\"aGVsbG8=\")",
+    "expected": {
+      "k": "string",
+      "v": "hello"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "now().Format(\"2006-01-02T15:04Z\")",
+    "expected": {
+      "k": "string",
+      "v": "2026-06-10T15:04Z"
+    },
+    "error": false,
+    "bucket": "PASS",
+    "nowMs": 1781103840000
+  },
+  {
+    "expr": "duration(\"1h\")",
+    "expected": {
+      "k": "duration",
+      "v": "3600000000000"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "date(\"2006-01-02T15:04:05Z\")",
+    "expected": {
+      "k": "time",
+      "v": 1136214245000
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "date(\"2006.01.02\", \"2006.01.02\")",
+    "expected": {
+      "k": "time",
+      "v": 1136160000000
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "date(\"2023-04-23T00:30:00.000+0100\", \"2006-01-02T15:04:05-0700\", \"America/Chicago\").Format(\"2006-01-02\")",
+    "expected": {
+      "k": "string",
+      "v": "2023-04-23"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "date(\"2023-04-23T00:30:00\", \"2006-01-02T15:04:05\", \"America/Chicago\").Format(\"2006-01-02\")",
+    "expected": {
+      "k": "string",
+      "v": "2023-04-23"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "date(\"2023-04-23\", \"2006-01-02\", \"America/Chicago\").Format(\"2006-01-02\")",
+    "expected": {
+      "k": "string",
+      "v": "2023-04-23"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "timezone(\"UTC\").String()",
+    "expected": {
+      "k": "string",
+      "v": "UTC"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "timezone(\"Europe/Moscow\").String()",
+    "expected": {
+      "k": "string",
+      "v": "Europe/Moscow"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "first(ArrayOfString)",
+    "expected": {
+      "k": "string",
+      "v": "foo"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "first(ArrayOfInt)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "first(ArrayOfAny)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "first([])",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "last(ArrayOfString)",
+    "expected": {
+      "k": "string",
+      "v": "baz"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "last(ArrayOfInt)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "last(ArrayOfAny)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "last([])",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "get(ArrayOfString, 1)",
+    "expected": {
+      "k": "string",
+      "v": "bar"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "get(ArrayOfString, 99)",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "get(ArrayOfInt, 1)",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "get(ArrayOfInt, -1)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "get(ArrayOfAny, 1)",
+    "expected": {
+      "k": "string",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "get({foo: 1, bar: 2}, \"foo\")",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "get({foo: 1, bar: 2}, \"unknown\")",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "take(ArrayOfString, 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo"
+        },
+        {
+          "k": "string",
+          "v": "bar"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "take(ArrayOfString, 99)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo"
+        },
+        {
+          "k": "string",
+          "v": "bar"
+        },
+        {
+          "k": "string",
+          "v": "baz"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "\"foo\" in keys({foo: 1, bar: 2})",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 in values({foo: 1, bar: 2})",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(toPairs({foo: 1, bar: 2}))",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(toPairs({}))",
+    "expected": {
+      "k": "int",
+      "v": "0"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "fromPairs([[\"foo\", 1], [\"bar\", 2]])",
+    "expected": {
+      "k": "map",
+      "v": {
+        "bar": {
+          "k": "int",
+          "v": "2"
+        },
+        "foo": {
+          "k": "int",
+          "v": "1"
+        }
+      }
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "fromPairs(toPairs({foo: 1, bar: 2}))",
+    "expected": {
+      "k": "map",
+      "v": {
+        "bar": {
+          "k": "int",
+          "v": "2"
+        },
+        "foo": {
+          "k": "int",
+          "v": "1"
+        }
+      }
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "groupBy(1..9, # % 2)",
+    "expected": {
+      "k": "map",
+      "v": {
+        "0": {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "2"
+            },
+            {
+              "k": "int",
+              "v": "4"
+            },
+            {
+              "k": "int",
+              "v": "6"
+            },
+            {
+              "k": "int",
+              "v": "8"
+            }
+          ]
+        },
+        "1": {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "3"
+            },
+            {
+              "k": "int",
+              "v": "5"
+            },
+            {
+              "k": "int",
+              "v": "7"
+            },
+            {
+              "k": "int",
+              "v": "9"
+            }
+          ]
+        }
+      }
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "groupBy(1..9, # % 2)[0]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "6"
+        },
+        {
+          "k": "int",
+          "v": "8"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "groupBy(1..3, # \u003e 1)[true]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "groupBy(1..3, # \u003e 1 ? nil : \"\")[nil]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "groupBy(ArrayOfFoo, .Value).a",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "map",
+          "v": {
+            "Bar": {
+              "k": "map",
+              "v": {
+                "Baz": {
+                  "k": "string",
+                  "v": ""
+                }
+              }
+            },
+            "Value": {
+              "k": "string",
+              "v": "a"
+            }
+          }
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "reduce(1..9, # + #acc, 0)",
+    "expected": {
+      "k": "int",
+      "v": "45"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "reduce(1..9, # + #acc)",
+    "expected": {
+      "k": "int",
+      "v": "45"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "reduce([.5, 1.5, 2.5], # + #acc, 0)",
+    "expected": {
+      "k": "float",
+      "v": 4.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "reduce([], 5, 0)",
+    "expected": {
+      "k": "int",
+      "v": "0"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "reduce(10..1, # + #acc, 100)",
+    "expected": {
+      "k": "int",
+      "v": "100"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "reduce([], # + #acc, 42)",
+    "expected": {
+      "k": "int",
+      "v": "42"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "concat(ArrayOfString, ArrayOfInt)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "foo"
+        },
+        {
+          "k": "string",
+          "v": "bar"
+        },
+        {
+          "k": "string",
+          "v": "baz"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "concat(PtrArrayWithNil, [nil])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "42"
+        },
+        {
+          "k": "nil"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "flatten([[\"a\", \"b\"], [1, 2]])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "flatten([[\"a\", \"b\"], [1, 2, [3, 4]]])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "flatten([[\"a\", \"b\"], [1, 2, [3, [[[[\"c\", \"d\"], \"e\"]]], 4]]])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        },
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "string",
+          "v": "c"
+        },
+        {
+          "k": "string",
+          "v": "d"
+        },
+        {
+          "k": "string",
+          "v": "e"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "uniq([1, 15, \"a\", 2, 3, 5, 2, \"a\", 2, \"b\"])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "15"
+        },
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "5"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "uniq([[1, 2], \"a\", 2, 3, [1, 2], [1, 3]])",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "2"
+            }
+          ]
+        },
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "1"
+            },
+            {
+              "k": "int",
+              "v": "3"
+            }
+          ]
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  }
+]

@@ -1,0 +1,3 @@
+[submodule "references/expr"]
+	path = references/expr
+	url = https://github.com/expr-lang/expr.git

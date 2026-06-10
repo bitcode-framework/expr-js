@@ -1,0 +1,1569 @@
+[
+  {
+    "expr": "1",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "-.5",
+    "expected": {
+      "k": "float",
+      "v": -0.5
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "true \u0026\u0026 false || false",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Int == 0 \u0026\u0026 Int32 == 0 \u0026\u0026 Int64 == 0 \u0026\u0026 Float64 == 0 \u0026\u0026 Bool \u0026\u0026 String == \"string\"",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width int type distinct from int"
+  },
+  {
+    "expr": "-Int64 == 0",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "\"a\" != \"b\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"a\" != \"b\" || 1 == 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Int + 0",
+    "expected": {
+      "k": "int",
+      "v": "0"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Uint64 + 0",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width unsigned type distinct from int"
+  },
+  {
+    "expr": "Uint64 + Int64",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width unsigned type distinct from int"
+  },
+  {
+    "expr": "Int32 + Int64",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width int type distinct from int"
+  },
+  {
+    "expr": "Float64 + 0",
+    "expected": {
+      "k": "float",
+      "v": 0
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "0 + Float64",
+    "expected": {
+      "k": "float",
+      "v": 0
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "0 \u003c= Float64",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Float64 \u003c 1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Int \u003c 1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "2 + 2 == 4",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "8 % 3",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "2 ** 8",
+    "expected": {
+      "k": "float",
+      "v": 256
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "2 ^ 8",
+    "expected": {
+      "k": "float",
+      "v": 256
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "-(2-5)**3-2/(+4-3)+-2",
+    "expected": {
+      "k": "float",
+      "v": 23
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"hello\" + \" \" + \"world\"",
+    "expected": {
+      "k": "string",
+      "v": "hello world"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "0 in -1..1 and 1 in 1..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Int in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Int32 in 0..1",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width int type distinct from int"
+  },
+  {
+    "expr": "Int64 in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "1 in [1, 2, 3] \u0026\u0026 \"foo\" in {foo: 0, bar: 1} \u0026\u0026 \"Bar\" in Foo",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "1 in [1.5] || 1 not in [1]",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "One in 0..1 \u0026\u0026 Two not in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Two not in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Two not    in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "-1 not in [1]",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Int32 in [10, 20]",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fixed-width int type distinct from int"
+  },
+  {
+    "expr": "String matches \"s.+\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String matches (\"^\" + String + \"$\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "'foo' + 'bar' not matches 'foobar'",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"foobar\" contains \"bar\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"foobar\" startsWith \"foo\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "\"foobar\" endsWith \"bar\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "(0..10)[5]",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Foo.Bar.Baz",
+    "expected": {
+      "k": "string",
+      "v": "baz"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Add(10, 5) + GetInt()",
+    "expected": {
+      "k": "int",
+      "v": "15"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Foo.Method().Baz",
+    "expected": {
+      "k": "string",
+      "v": "baz (from Foo.Method)"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Foo.MethodWithArgs(\"prefix \")",
+    "expected": {
+      "k": "string",
+      "v": "prefix foo"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "len([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len([1, Two, 3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "len([\"hello\", \"world\"])",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(\"hello, world\")",
+    "expected": {
+      "k": "int",
+      "v": "12"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len('北京')",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len('👍🏻')",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len('👍')",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(ArrayOfInt)",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "len({a: 1, b: 2, c: 2})",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "max(1, 2, 3)",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min([1, 2, 3])",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "min(1, 2, 3)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "{foo: 0, bar: 1}",
+    "expected": {
+      "k": "map",
+      "v": {
+        "bar": {
+          "k": "int",
+          "v": "1"
+        },
+        "foo": {
+          "k": "int",
+          "v": "0"
+        }
+      }
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "(true ? 0+1 : 2+3) + (false ? -1 : -2)",
+    "expected": {
+      "k": "int",
+      "v": "-1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "filter(1..9, {# \u003e 7})",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "8"
+        },
+        {
+          "k": "int",
+          "v": "9"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(1..3, {# * #})",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "9"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "all(1..3, {# \u003e 0})",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "count(1..30, {# % 3 == 0})",
+    "expected": {
+      "k": "int",
+      "v": "10"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "count([true, true, false])",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"a\" \u003c \"b\"",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Time.Sub(Time).String() == \"0s\"",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "1 + 1",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "(One * Two) * 3 == One * (Two * 3)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[1]",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[0] \u003c ArrayOfInt[1]",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[-1]",
+    "expected": {
+      "k": "int",
+      "v": "5"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[1:2]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[1:4]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[-4:-1]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        },
+        {
+          "k": "int",
+          "v": "4"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[:3]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "2"
+        },
+        {
+          "k": "int",
+          "v": "3"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[3:]",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "5"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[0:5] == ArrayOfInt",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[0:] == ArrayOfInt",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[:5] == ArrayOfInt",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "ArrayOfInt[:] == ArrayOfInt",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "4 in 5..1",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "4..0",
+    "expected": {
+      "k": "array",
+      "v": []
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "NilStruct",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go typed-nil pointer struct has no JS analog"
+  },
+  {
+    "expr": "NilAny == nil \u0026\u0026 nil == NilAny \u0026\u0026 nil == nil \u0026\u0026 NilAny == NilAny \u0026\u0026 NilInt == nil \u0026\u0026 NilSlice == nil \u0026\u0026 NilStruct == nil",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go typed-nil pointer struct has no JS analog"
+  },
+  {
+    "expr": "0 == nil || \"str\" == nil || true == nil",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "Variadic(6, 1, 2, 3)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Variadic(0)",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String[:]",
+    "expected": {
+      "k": "string",
+      "v": "string"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String[:3]",
+    "expected": {
+      "k": "string",
+      "v": "str"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String[:9]",
+    "expected": {
+      "k": "string",
+      "v": "string"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String[3:9]",
+    "expected": {
+      "k": "string",
+      "v": "ing"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "String[7:9]",
+    "expected": {
+      "k": "string",
+      "v": ""
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "map(filter(ArrayOfInt, # \u003e= 3), # + 1)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "5"
+        },
+        {
+          "k": "int",
+          "v": "6"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "Time \u003c Time + Duration",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time + Duration \u003e Time",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time == Time",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time \u003e= Time",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time \u003c= Time",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time == Time + Duration",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "Time != Time",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "TimePlusDay - Duration",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "duration(\"1h\") == duration(\"1h\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "TimePlusDay - Time \u003e= duration(\"24h\")",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go time.Time env value: identity/formatting via reflect not modeled in JS mock env"
+  },
+  {
+    "expr": "duration(\"1h\") \u003e duration(\"1m\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") \u003c duration(\"1m\")",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") \u003e= duration(\"1m\")",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") \u003c= duration(\"1m\")",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") + duration(\"1m\")",
+    "expected": {
+      "k": "duration",
+      "v": "3660000000000"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") - duration(\"1m\")",
+    "expected": {
+      "k": "duration",
+      "v": "3540000000000"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "7 * duration(\"1h\")",
+    "expected": {
+      "k": "duration",
+      "v": "25200000000000"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1h\") * 7",
+    "expected": {
+      "k": "duration",
+      "v": "25200000000000"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "duration(\"1s\") * .5",
+    "expected": {
+      "k": "float",
+      "v": 500000000
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 /* one */ + 2 // two",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "let x = 1; x + 2",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(1..3, let x = #; let y = x * x; y * y)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "1"
+        },
+        {
+          "k": "int",
+          "v": "16"
+        },
+        {
+          "k": "int",
+          "v": "81"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(1..2, let x = #; map(2..3, let y = #; x + y))",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "3"
+            },
+            {
+              "k": "int",
+              "v": "4"
+            }
+          ]
+        },
+        {
+          "k": "array",
+          "v": [
+            {
+              "k": "int",
+              "v": "4"
+            },
+            {
+              "k": "int",
+              "v": "5"
+            }
+          ]
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(filter(1..99, # % 7 == 0))",
+    "expected": {
+      "k": "int",
+      "v": "14"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "find(ArrayOfFoo, .Value == \"baz\")",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "findIndex(ArrayOfFoo, .Value == \"baz\")",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "filter(ArrayOfFoo, .Value == \"baz\")[0]",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "first(filter(ArrayOfFoo, .Value == \"baz\"))",
+    "expected": null,
+    "error": false,
+    "bucket": "NOT_APPLICABLE",
+    "reason": "Go fmt.Stringer/struct %v formatting (reflect) not modeled in JS"
+  },
+  {
+    "expr": "first(filter(ArrayOfFoo, false))",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "findLast(1..9, # % 2 == 0)",
+    "expected": {
+      "k": "int",
+      "v": "8"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "findLastIndex(1..9, # % 2 == 0)",
+    "expected": {
+      "k": "int",
+      "v": "7"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "filter(1..9, # % 2 == 0)[-1]",
+    "expected": {
+      "k": "int",
+      "v": "8"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "last(filter(1..9, # % 2 == 0))",
+    "expected": {
+      "k": "int",
+      "v": "8"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(filter(1..9, # % 2 == 0), # * 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "4"
+        },
+        {
+          "k": "int",
+          "v": "8"
+        },
+        {
+          "k": "int",
+          "v": "12"
+        },
+        {
+          "k": "int",
+          "v": "16"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(map(filter(1..9, # % 2 == 0), # * 2), # * 2)",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "int",
+          "v": "8"
+        },
+        {
+          "k": "int",
+          "v": "16"
+        },
+        {
+          "k": "int",
+          "v": "24"
+        },
+        {
+          "k": "int",
+          "v": "32"
+        }
+      ]
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "first(map(filter(1..9, # % 2 == 0), # * 2))",
+    "expected": {
+      "k": "int",
+      "v": "4"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "map(filter(1..9, # % 2 == 0), # * 2)[-1]",
+    "expected": {
+      "k": "int",
+      "v": "16"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(map(filter(1..9, # % 2 == 0), # * 2))",
+    "expected": {
+      "k": "int",
+      "v": "4"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "len(filter(map(1..9, # * 2), # % 2 == 0))",
+    "expected": {
+      "k": "int",
+      "v": "9"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "first(filter(map(1..9, # * 2), # % 2 == 0))",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "2^3 == 8",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "4/2 == 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": ".5 in 0..1",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": ".5 in ArrayOfInt",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "bitnot(10)",
+    "expected": {
+      "k": "int",
+      "v": "-11"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitxor(15, 32)",
+    "expected": {
+      "k": "int",
+      "v": "47"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitand(90, 34)",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitnand(35, 9)",
+    "expected": {
+      "k": "int",
+      "v": "34"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitor(10, 5)",
+    "expected": {
+      "k": "int",
+      "v": "15"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitshr(7, 2)",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitshl(7, 2)",
+    "expected": {
+      "k": "int",
+      "v": "28"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "bitushr(-100, 5)",
+    "expected": {
+      "k": "int",
+      "v": "576460752303423484"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "\"hello\"[1:3]",
+    "expected": {
+      "k": "string",
+      "v": "el"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "[1, 2, 3]?.[0]",
+    "expected": {
+      "k": "int",
+      "v": "1"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "[[1, 2], 3, 4]?.[0]?.[1]",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "[nil, 3, 4]?.[0]?.[1]",
+    "expected": {
+      "k": "nil"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 \u003e 2 \u003c 3",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 \u003c 2 \u003c 3",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 \u003c 2 \u003c 3 \u003e 4",
+    "expected": {
+      "k": "bool",
+      "v": false
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 \u003c 2 \u003c 3 \u003e 2",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1 \u003c 2 \u003c 3 == true",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "if 1 \u003e 2 { 333 * 2 + 1 } else { 444 }",
+    "expected": {
+      "k": "int",
+      "v": "444"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "let a = 3;\n\t\t\tlet b = 2;\n\t\t\tif a\u003eb {let c = Add(a, b); c+1} else {Add(10, b)}\n\t\t\t",
+    "expected": {
+      "k": "int",
+      "v": "6"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  },
+  {
+    "expr": "if \"a\" \u003c \"b\" {let x = \"a\"; x} else {\"abc\"}",
+    "expected": {
+      "k": "string",
+      "v": "a"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "if 1 == 2 { \"no\" } else if 1 == 1 { \"yes\" } else { \"maybe\" }",
+    "expected": {
+      "k": "string",
+      "v": "yes"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "1; 2; 3",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS"
+  },
+  {
+    "expr": "let a = 1; Add(2, 2); let b = 2; a + b",
+    "expected": {
+      "k": "int",
+      "v": "3"
+    },
+    "error": false,
+    "bucket": "PASS_WITH_ADAPTER"
+  }
+]

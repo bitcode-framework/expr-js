@@ -1,0 +1,141 @@
+[
+  {
+    "expr": "'hello' + ' ' + 'world'",
+    "expected": {
+      "k": "string",
+      "v": "hello world"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'foobar' contains 'oba'",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'foobar' startsWith 'foo'",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'foobar' endsWith 'bar'",
+    "expected": {
+      "k": "bool",
+      "v": true
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "upper('abc')",
+    "expected": {
+      "k": "string",
+      "v": "ABC"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "lower('ABC')",
+    "expected": {
+      "k": "string",
+      "v": "abc"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "trim('  x  ')",
+    "expected": {
+      "k": "string",
+      "v": "x"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "split('a,b,c', ',')",
+    "expected": {
+      "k": "array",
+      "v": [
+        {
+          "k": "string",
+          "v": "a"
+        },
+        {
+          "k": "string",
+          "v": "b"
+        },
+        {
+          "k": "string",
+          "v": "c"
+        }
+      ]
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'abcdef'[1:3]",
+    "expected": {
+      "k": "string",
+      "v": "bc"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'abcdef'[2:]",
+    "expected": {
+      "k": "string",
+      "v": "cdef"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "'abcdef'[:3]",
+    "expected": {
+      "k": "string",
+      "v": "abc"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "replace('aaa', 'a', 'b')",
+    "expected": {
+      "k": "string",
+      "v": "bbb"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "indexOf('hello', 'l')",
+    "expected": {
+      "k": "int",
+      "v": "2"
+    },
+    "type": "",
+    "error": false
+  },
+  {
+    "expr": "repeat('ab', 3)",
+    "expected": {
+      "k": "string",
+      "v": "ababab"
+    },
+    "type": "",
+    "error": false
+  }
+]

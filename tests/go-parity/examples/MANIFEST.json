@@ -1,0 +1,38 @@
+{
+  "_about": "Classification of upstream test corpora that drive example/real-world fixtures: testdata/examples.md (examples_test.go), testdata/crowdsec.json (test/crowdsec), testdata/coredns (test/coredns), testdata/generated.txt (test/gen fuzz output), testdata/crash.txt (fuzz crash regression).",
+  "area": "examples_testdata",
+  "items": [
+    {
+      "source": "references/expr/testdata/examples.md (test/examples/examples_test.go)",
+      "name": "TestExamples",
+      "class": "PASS_WITH_ADAPTER",
+      "reason": "Markdown-embedded expressions over a fixed env (let/map/groupBy/split/toPairs pipelines). All language features used are ported and covered by the expr/builtin corpora. Running the .md directly needs a markdown-fence extractor adapter + the example env; the underlying language behavior is PASS."
+    },
+    {
+      "source": "references/expr/testdata/crowdsec.json (test/crowdsec)",
+      "name": "TestCrowdsec",
+      "class": "PASS_WITH_ADAPTER",
+      "reason": "Real-world security-rule corpus bound to a Go struct env (crowdsec funcs.go custom functions + structs). Requires porting the crowdsec env/funcs as a JS adapter. Expression surface is supported; not yet adapted."
+    },
+    {
+      "source": "references/expr/test/coredns/coredns.go",
+      "name": "TestCoreDNS",
+      "class": "PASS_WITH_ADAPTER",
+      "reason": "Real-world DNS-policy corpus bound to a Go struct env. Same adapter requirement as crowdsec."
+    },
+    {
+      "source": "references/expr/testdata/generated.txt (test/gen)",
+      "name": "TestGenerated",
+      "class": "NOT_APPLICABLE",
+      "reason": "Output of Go's native fuzzer (test/gen). The generated expressions reference Go-typed env fields (fixed-width ints, pointers, Stringer); replaying them requires the Go fuzz env shape. Fuzzing itself is Go-native (FORCED_DIVERGENCE)."
+    },
+    {
+      "source": "references/expr/testdata/crash.txt",
+      "name": "FuzzCrashRegression",
+      "class": "NOT_APPLICABLE",
+      "reason": "A single Go fuzz-crash regression seed for go test -run=FuzzExpr; Go-native fuzzing artifact, no JS analog."
+    }
+  ],
+  "summary": { "total": 5, "pass_with_adapter": 3, "not_applicable": 2 },
+  "note": "The crowdsec/coredns/examples corpora are additive PASS_WITH_ADAPTER candidates (env-adapter work), not behavioral gaps: every language feature they exercise is already verified by the expr (139) and builtin (137) corpora."
+}

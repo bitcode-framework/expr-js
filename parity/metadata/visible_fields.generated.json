@@ -1,0 +1,46 @@
+{
+  "fields": [
+    {
+      "anonymous": true,
+      "exported": true,
+      "index": [
+        0
+      ],
+      "name": "Embedded",
+      "pkgPath": "",
+      "type": "main.Embedded"
+    },
+    {
+      "anonymous": false,
+      "exported": true,
+      "index": [
+        0,
+        0
+      ],
+      "name": "ID",
+      "pkgPath": "",
+      "type": "int"
+    },
+    {
+      "anonymous": false,
+      "exported": true,
+      "index": [
+        1
+      ],
+      "name": "Name",
+      "pkgPath": "",
+      "type": "string"
+    },
+    {
+      "anonymous": false,
+      "exported": false,
+      "index": [
+        2
+      ],
+      "name": "hidden",
+      "pkgPath": "main",
+      "type": "int"
+    }
+  ],
+  "sample": "VisibleSample"
+}
